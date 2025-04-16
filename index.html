@@ -220,6 +220,11 @@
         const elapsedTimeTd = document.createElement('td');
         elapsedTimeTd.innerText = item.elapsedTime;
 
+        // 문제당 소요시간 계산 및 생성
+        const timePerProblemTd = document.createElement('td');
+        const timePerProblem = item.score ? ((Number(item.elapsedTime) / Number(item.score)) * 10) : 0;
+        timePerProblemTd.innerText = timePerProblem.toFixed(2);
+
         const timestampTd = document.createElement('td');
         timestampTd.innerText = new Date(item.timestamp).toLocaleString();
 
@@ -233,6 +238,7 @@
         tr.appendChild(nameTd);
         tr.appendChild(scoreTd);
         tr.appendChild(elapsedTimeTd);
+        tr.appendChild(timePerProblemTd);
         tr.appendChild(timestampTd);
         tr.appendChild(deleteTd);
 
